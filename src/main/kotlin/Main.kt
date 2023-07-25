@@ -29,13 +29,17 @@ fun main() {
         return
     }
 
-    println("${date.dayOfMonth}/${date.month.value}/${date.year}")
+    val day = if (date.dayOfMonth.toString().length == 1) {
+        "0" + date.dayOfMonth
+    } else {
+        date.dayOfMonth
+    }
 
 
     val usedApi = CbApiService.cbApiService
     // Запрос к АПИ в корутине
     runBlocking {
-        val call = usedApi.getCbResponse("${date.dayOfMonth}/${date.month.value}/${date.year}")
+        val call = usedApi.getCbResponse("${day}/${date.month.value}/${date.year}")
 
         var requestedValute: Valute? = null
 
@@ -45,7 +49,6 @@ fun main() {
                 requestedValute = i
             }
         }
-        println("Code:" + code)
 
         println("${requestedValute?.charCode}(${requestedValute?.name}): ${requestedValute?.value}")
     }
