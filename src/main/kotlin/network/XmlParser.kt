@@ -1,12 +1,6 @@
 package network
 
 import org.simpleframework.xml.*
-import org.simpleframework.xml.core.Persister
-
-class XmlParser {
-    val serializer: Serializer = Persister()
-    //val dataFetch = serializer.read(ValCurs::class.java)
-}
 
 // Классы, получаемые из XML ответа
 @Root(name = "ValCurs")
@@ -14,13 +8,14 @@ class ValCurs {
     @field:ElementList(inline = true, name = "Valute")
     var valutes: List<Valute>? = null
 
-    @field:Attribute(name = "Date")
+    @field:Attribute(name = "Date", required = false)
     var date: String? = null
 
-    @field:Attribute(name = "name")
+    @field:Attribute(name = "name", required = false)
     var name: String? = null
 }
 
+// Вложенные элементы - валюты
 @Root(name = "Valute")
 class Valute{
     @field:Attribute(name = "ID")

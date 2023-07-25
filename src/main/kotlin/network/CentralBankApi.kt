@@ -11,6 +11,7 @@ private val retrofit = Retrofit.Builder()
     .baseUrl(BASE_URL)
     .addConverterFactory(SimpleXmlConverterFactory.create())
     .build()
+// Для конвертации из XML добавляется фабрика
 
 // Интерфейс для запросов
 interface CentralBankApi {
@@ -20,7 +21,7 @@ interface CentralBankApi {
     ): ValCurs
 }
 
-// Синглтон для АПИ
+// Синглтон для доступа к АПИ
 object CbApiService {
     val cbApiService = retrofit.create(CentralBankApi::class.java)
 }
