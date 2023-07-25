@@ -17,6 +17,9 @@ dependencies {
 
     implementation("org.simpleframework:simple-xml:2.7.1")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-simplexml:2.9.0")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.2")
 }
 
 tasks.test {
